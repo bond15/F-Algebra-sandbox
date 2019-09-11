@@ -1,4 +1,4 @@
-{-# LANGUAGE DeriveFunctor #-}
+{-# LANGUAGE DeriveFunctor, ExistentialQuantification #-}
 
 -- from wiki.haskell.org/catamorphims
 
@@ -71,3 +71,9 @@ toInt  = cata phi where
 
 resultplus = toInt (plus three five)
 resultmult = toInt( times three five)
+
+-- Mendler Algebra
+
+--type MendlerAlgebra f c = forall a.  (a -> c) -> f a -> c
+--mcata :: MendlerAlgebra f c -> Mu f -> c
+--mcata phi = phi (mcata phi) .outF

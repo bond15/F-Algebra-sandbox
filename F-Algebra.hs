@@ -82,10 +82,10 @@ data ExprF a = Num a | Add a a | Mul a a deriving Show --(Functor, Show)
             both return values of type a
 -}
 
-instance Functor ExprF where
-  fmap eval (Num x) = (Num x)  -- Why identity here? instead of (Num (eval x))
-  fmap eval (Add left right) = (Add (eval left) (eval right))
-  fmap eval (Mul left right) = (Mul (eval left) (eval right))
+--instance Functor ExprF where
+ -- fmap eval (Num x) = (Num x)  -- Why identity here? instead of (Num (eval x))
+  --fmap eval (Add left right) = (Add (eval left) (eval right))
+  --fmap eval (Mul left right) = (Mul (eval left) (eval right))
 
 
 f :: Int -> Bool
@@ -108,12 +108,12 @@ alg (Mul x y ) = x * y
 
  -- F-algebra with Expression Functor and Carrier Type String
 
-alg' :: Algebra ExprF String
+--alg' :: Algebra ExprF String
 --alg' :: ExprF String -> String
 
-alg' (Num x) = [chr (ord 'a' + x)]
-alg' (Add x y) = x ++ y
-alg' (Mul x y) = concat [[a,b] | a <- x, b <- y]
+--alg' (Num x) = [chr (ord 'a' + x)]
+--alg' (Add x y) = x ++ y
+--alg' (Mul x y) = concat [[a,b] | a <- x, b <- y]
 
 
 -- How to get the 'eval' function that computes the recursive terms?
